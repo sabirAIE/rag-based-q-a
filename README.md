@@ -75,11 +75,11 @@ From the root of the project, run:
 | Service | Description | URL | Health Check |
 |---------|-------------|-----|--------------|
 | **Frontend** | React + Vite SPA | [http://localhost:5173](http://localhost:5173) | ✅ UI loads |
-| **FastAPI** | Python ML Backend | [http://localhost:8000](http://localhost:9001) | [/health](http://localhost:8000/health) |
-| **NestJS** | Node.js API Backend | [http://localhost:3000](http://localhost:5001) | [/health](http://localhost:3000/health) |
+| **FastAPI** | Python ML Backend | [http://localhost:9001](http://localhost:9001) | [/health](http://localhost:8000/health) |
+| **NestJS** | Node.js API Backend | [http://localhost:5001](http://localhost:5001) | [/health](http://localhost:3000/health) |
 | **PostgreSQL** | Vector Database | `localhost:5455` | Connection test |
-| **API Docs** | FastAPI Swagger | [http://localhost:8000/docs](http://localhost:9001/docs) | Interactive API |
-| **NestJS Docs** | NestJS Swagger | [http://localhost:3000/api](http://localhost:5001/api) | API Documentation |
+| **API Docs** | FastAPI Swagger | [http://localhost:9001/docs](http://localhost:9001/docs) | Interactive API |
+| **NestJS Docs** | NestJS Swagger | [http://localhost:5001/api](http://localhost:5001/api) | API Documentation |
 
 ### Database Connection Details
 ```
