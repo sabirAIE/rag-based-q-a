@@ -196,4 +196,3 @@ docker exec -it rag-postgres psql -U rag_user -d rag_db -c "SELECT * FROM pg_ext
 # Reinstall extension
 docker exec -it rag-postgres psql -U rag_user -d rag_db -c "CREATE EXTENSION IF NOT EXISTS vector;"
 ```
-*Last updated: December 2024*
