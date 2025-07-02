@@ -14,6 +14,10 @@ class QARequest(BaseModel):
     question: str
     documentIds: list[str]
 
+@router.get("/health")
+def health_check():
+    return {"status": "ok", "message": "RAG FastAPI backend is running."}
+
 
 @router.post("/query")
 def query_qa(req: QARequest):

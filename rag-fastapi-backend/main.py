@@ -8,6 +8,10 @@ load_dotenv()
 
 app = FastAPI()
 
+@app.get("/health")
+def health_check():
+    return {"status": "ok", "message": "RAG FastAPI backend is running."}
+
 # ✅ Allow frontend origin
 app.add_middleware(
     CORSMiddleware,
