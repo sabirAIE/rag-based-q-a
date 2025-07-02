@@ -67,3 +67,30 @@ From the root of the project, run:
 
 ```bash
 docker-compose up --build
+
+```
+
+---
+
+## 🌐 Service URLs & Access Points
+
+| Service | Description | URL | Health Check |
+|---------|-------------|-----|--------------|
+| **Frontend** | React + Vite SPA | [http://localhost:5173](http://localhost:5173) | ✅ UI loads |
+| **FastAPI** | Python ML Backend | [http://localhost:8000](http://localhost:8000) | [/health](http://localhost:8000/health) |
+| **NestJS** | Node.js API Backend | [http://localhost:3000](http://localhost:3000) | [/health](http://localhost:3000/health) |
+| **PostgreSQL** | Vector Database | `localhost:5455` | Connection test |
+| **API Docs** | FastAPI Swagger | [http://localhost:8000/docs](http://localhost:8000/docs) | Interactive API |
+| **NestJS Docs** | NestJS Swagger | [http://localhost:3000/api](http://localhost:3000/api) | API Documentation |
+
+### Database Connection Details
+```
+Host: localhost
+Port: 5455
+Database: rag_db
+Username: rag_user
+Password: rag_pass
+Connection URL: postgresql://rag_user:rag_pass@localhost:5455/rag_db
+```
+
+---
