@@ -65,8 +65,7 @@ Make sure the following are installed on your system:
 From the root of the project, run:
 
 ```bash
-docker-compose up --build
-
+./build.sh
 ```
 
 ---
