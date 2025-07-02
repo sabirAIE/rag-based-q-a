@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: ankane/pgvector
+    container_name: pgvector-db
+    ports:
+      - "5455:5432"
+    environment:
+      POSTGRES_USER: rag_user
+      POSTGRES_PASSWORD: rag_pass
+      POSTGRES_DB: rag_db
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data

@@ -1,0 +1,56 @@
+stages:
+  - test
+  - build
+  - deploy
+
+# --- TEST STAGE ---
+test_fastapi_backend:
+  stage: test
+  script:
+    - echo "✅ Testing FastAPI backend..."
+    - cd rag-fastapi-backend
+    - echo "No unit tests configured for FastAPI"
+
+test_nest_backend:
+  stage: test
+  script:
+    - echo "✅ Testing NestJS backend..."
+    - cd rag-nest-backend
+    - npm install
+    - npm run lint
+    - echo "NestJS lint check done"
+
+test_react_frontend:
+  stage: test
+  script:
+    - echo "✅ Testing React frontend..."
+    - cd rag-frontend-react-vite
+    - npm install
+    - npm run lint
+    - echo "React lint check done"
+
+# --- BUILD STAGE ---
+build_fastapi_backend:
+  stage: build
+  script:
+    - echo "🔧 Building FastAPI Docker image..."
+    - docker build -t rag-fastapi-backend ./rag-fastapi-backend
+
+build_nest_backend:
+  stage: build
+  script:
+    - echo "🔧 Building NestJS Docker image..."
+    - docker build -t rag-nest-backend ./rag-nest-backend
+
+build_react_frontend:
+  stage: build
+  script:
+    - echo "🔧 Building React frontend Docker image..."
+    - docker build -t rag-frontend-react-vite ./rag-frontend-react-vite
+
+# --- DEPLOY STAGE ---
+deploy_all:
+  stage: deploy
+  script:
+    - echo "🚀 Deploying all services to GCP..."
+    # we need to add commads to deploy to GCP

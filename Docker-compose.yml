@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  db:
+    image: ankane/pgvector
+    container_name: pgvector-db
+    ports:
+      - "5455:5432"
+    environment:
+      POSTGRES_USER: rag_user
+      POSTGRES_PASSWORD: rag_pass
+      POSTGRES_DB: rag_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  fastapi:
+    build:
+      context: ./rag-fastapi-backend
+    container_name: rag-fastapi
+    ports:
+      - "9001:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://rag_user:rag_pass@db:5432/rag_db
+
+  nest:
+    build:
+      context: ./rag-nest-backend
+    container_name: rag-nest
+    ports:
+      - "5001:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://rag_user:rag_pass@db:5432/rag_db
+
+  frontend:
+    build:
+      context: ./rag-frontend-react-vite
+    container_name: rag-frontend
+    ports:
+      - "4000:80"
+    depends_on:
+      - fastapi
+      - nest
+
+volumes:
+  pgdata:
