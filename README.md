@@ -15,13 +15,12 @@ This project is a full-stack RAG (Retrieval-Augmented Generation) application, c
 <img width="1679" alt="image" src="https://github.com/user-attachments/assets/b3c1878b-24b0-4ac0-9757-d188579be454" />
 
 
+## System Architechture
+<img width="536" alt="image" src="https://github.com/user-attachments/assets/c36c58ae-3ce2-4809-88db-37c630f7c423" />
 
-
-
-
-Everything is containerized using **Docker**, and can be run locally using a single command.
 
 ---
+### Everything is containerized using **Docker**, and can be run locally using a single command.
 
 ## 📁 Project Structure
 
@@ -93,4 +92,42 @@ Password: rag_pass
 Connection URL: postgresql://rag_user:rag_pass@localhost:5455/rag_db
 ```
 
+---
+
+## 🛠️ Development Setup
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/sabirAIE/rag-based-q-a.git
+
+# 2. Move into the project directory
+cd rag-based-q-a
+
+# 3. (Optional) If any subfolders have their own .git folders, remove them
+rm -rf rag-nest-backend/.git
+rm -rf rag-fastapi-backend/.git
+rm -rf rag-frontend-react-vite/.git
+
+# 4. Remove any existing git history and reinitialize (if needed)
+rm -rf .git
+git init
+git remote add origin https://github.com/sabirAIE/rag-based-q-a.git
+
+# 5. Add and commit project files
+git add .
+git commit -m "Initial commit - cleaned nested git histories"
+
+# 6. Push to GitHub (force push if needed)
+git branch -M main
+git push --force -u origin main
+
+# 7. Build and run all services with Docker
+docker-compose up --build
+
+# 8. Access the app locally:
+# Frontend    -> http://localhost:5173
+# FastAPI     -> http://localhost:8000
+# NestJS      -> http://localhost:3000
+# Postgres DB -> localhost:5455 (user: rag_user, pass: rag_pass, db: rag_db)
+```
 ---
