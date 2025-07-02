@@ -93,6 +93,21 @@ Connection URL: postgresql://rag_user:rag_pass@localhost:5455/rag_db
 
 ---
 
+### Environment Variables for Nest API
+
+```
+DB_HOST=localhost
+DB_PORT=5455
+DB_USERNAME=rag_user
+DB_PASSWORD=rag_pass
+DB_NAME=rag_db
+JWT_SECRET=mystrongsecret
+JWT_EXPIRES_IN=1d
+SERVER_PORT=5001
+FAST_API_URL=http://localhost:9001
+
+
+```
 ## 🛠️ Development Setup
 
 ```bash
