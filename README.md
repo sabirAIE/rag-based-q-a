@@ -105,9 +105,16 @@ JWT_SECRET=mystrongsecret
 JWT_EXPIRES_IN=1d
 SERVER_PORT=5001
 FAST_API_URL=http://localhost:9001
+```
 
+### Environment Variables for FAST API
 
 ```
+NEST_API = "http://localhost:5001"
+GEMINI_API_KEY = "AIzaSyDEu4OYthxGV-osjSJ_xQW3mx00VKz4T5U"
+```
+
+
 ## 🛠️ Development Setup
 
 ```bash
