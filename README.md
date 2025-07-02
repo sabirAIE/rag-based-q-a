@@ -102,31 +102,98 @@ git clone https://github.com/sabirAIE/rag-based-q-a.git
 # 2. Move into the project directory
 cd rag-based-q-a
 
-# 3. (Optional) If any subfolders have their own .git folders, remove them
-rm -rf rag-nest-backend/.git
-rm -rf rag-fastapi-backend/.git
-rm -rf rag-frontend-react-vite/.git
+# 3. Start Fast API Server
+cd rag-fastapi-backend
+uvicorn main:app --reload --port 9001
 
-# 4. Remove any existing git history and reinitialize (if needed)
-rm -rf .git
-git init
-git remote add origin https://github.com/sabirAIE/rag-based-q-a.git
+# 4. Start Nest JS API Server
+cd rag-nest-backend
+npm run start:dev
 
-# 5. Add and commit project files
-git add .
-git commit -m "Initial commit - cleaned nested git histories"
+# 5. Start React App
+cd rag-frontend-react-vite
+npm run dev
 
-# 6. Push to GitHub (force push if needed)
-git branch -M main
-git push --force -u origin main
-
-# 7. Build and run all services with Docker
-docker-compose up --build
 
 # 8. Access the app locally:
 # Frontend    -> http://localhost:5173
-# FastAPI     -> http://localhost:8000
-# NestJS      -> http://localhost:3000
+# FastAPI     -> http://localhost:9001
+# NestJS      -> http://localhost:5001
 # Postgres DB -> localhost:5455 (user: rag_user, pass: rag_pass, db: rag_db)
 ```
 ---
+
+
+## 🧯 Troubleshooting
+
+### Common Issues & Solutions
+
+#### **Port Conflicts**
+```bash
+# Error: "Port already in use"
+# Solution: Stop conflicting services or change ports in docker-compose.yml
+
+# Check what's using the port
+netstat -tulpn | grep :8000
+# or
+lsof -i :8000
+
+# Kill process using port
+kill -9 $(lsof -ti:8000)
+```
+
+#### **Database Connection Issues**
+```bash
+# Error: "could not connect to server"
+# Solution: Ensure PostgreSQL container is running
+
+docker-compose logs postgres
+docker-compose restart postgres
+
+# Test connection
+docker exec -it rag-postgres pg_isready -U rag_user
+```
+
+#### **Frontend Not Loading**
+```bash
+# Error: "Cannot connect to backend"
+# Solution: Check API URLs in frontend configuration
+
+# Verify backend is running
+curl http://localhost:9001/health
+curl http://localhost:5001/health
+
+# Check frontend environment variables
+docker-compose exec frontend env | grep API
+```
+
+#### **Python Dependencies**
+```bash
+# Error: "No module named 'xyz'"
+# Solution: Rebuild FastAPI container
+
+docker-compose build fastapi-backend --no-cache
+docker-compose up fastapi-backend
+```
+
+#### **Node.js Dependencies**
+```bash
+# Error: "Cannot find module"
+# Solution: Clear npm cache and reinstall
+
+docker-compose exec nestjs-backend npm cache clean --force
+docker-compose build nestjs-backend --no-cache
+```
+
+#### **Vector Database Issues**
+```bash
+# Error: "pgvector extension not found"
+# Solution: Ensure proper PostgreSQL image and initialization
+
+# Check if extension is installed
+docker exec -it rag-postgres psql -U rag_user -d rag_db -c "SELECT * FROM pg_extension WHERE extname='vector';"
+
+# Reinstall extension
+docker exec -it rag-postgres psql -U rag_user -d rag_db -c "CREATE EXTENSION IF NOT EXISTS vector;"
+```
+*Last updated: December 2024*
