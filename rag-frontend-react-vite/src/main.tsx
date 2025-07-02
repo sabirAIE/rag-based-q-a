@@ -9,6 +9,7 @@ import LoginView from "./views/LoginView.tsx";
 import SignupView from "./views/SignupView.tsx";
 import LandingLayout from "./layouts/LandingLayout.tsx";
 import { AuthProvider } from "./context/auth-context.tsx";
+import "./index.css"
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
