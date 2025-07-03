@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Upload, Trash2, FileText, TreePalm } from "lucide-react";
+import { Upload, FileText } from "lucide-react";
 import { api } from "../APIs";
 import type { DocumentFile } from "../types";
 

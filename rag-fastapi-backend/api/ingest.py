@@ -8,7 +8,7 @@ router = APIRouter()
 
 @router.post("/{doc_id}")
 def ingest_document(doc_id: str):
-    file_path = f"../uploads/{doc_id}.pdf"
+    file_path = f"/var/uploads/{doc_id}.pdf"
     if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail="Document not found")
 

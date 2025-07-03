@@ -1,14 +1,12 @@
-import { useEffect, useRef, useState, type JSX } from "react";
+import { useEffect, useState} from "react";
 import {
   Search,
   FileText,
   Upload,
   Sparkles,
-  BookOpen,
   ChevronRight,
   Check,
   AlertCircle,
-  Link,
   FileX2,
 } from "lucide-react";
 import { api } from "./APIs";
@@ -44,7 +42,7 @@ export function ChatAPP() {
     setLoading(true);
 
     try {
-      const res = await api.post<QAResponse>("http://localhost:9001/qa/query", {
+      const res = await api.post<QAResponse>("http://localhost:8001/qa/query", {
         question,
         documentIds: selectedDocs,
       });

@@ -3,7 +3,7 @@ version: "3.8"
 services:
   db:
     image: ankane/pgvector
-    container_name: pgvector-db
+    container_name: pgvector-v2-db
     ports:
       - "5455:5432"
     environment:
@@ -19,22 +19,28 @@ services:
       context: ./rag-fastapi-backend
     container_name: rag-fastapi
     ports:
-      - "9001:8000"
+      - "8001:9001"
     depends_on:
       - db
+    volumes:
+      - ./uploads:/var/uploads
     environment:
-      DATABASE_URL: postgres://rag_user:rag_pass@db:5432/rag_db
+      DATABASE_URL: postgresql://rag_user:rag_pass@db:5432/rag_db
+      NEST_API: http://nest:6001
 
   nest:
     build:
       context: ./rag-nest-backend
     container_name: rag-nest
     ports:
-      - "5001:3000"
+      - "5001:6001"
     depends_on:
       - db
+    volumes:
+      - ./uploads:/var/uploads
     environment:
       DATABASE_URL: postgres://rag_user:rag_pass@db:5432/rag_db
+      FAST_API_URL: http://fastapi:9001
 
   frontend:
     build:

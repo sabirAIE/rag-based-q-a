@@ -4,6 +4,12 @@ from api import ingest, qa
 from dotenv import load_dotenv
 import os
 
+from db.models import Base
+from db.session import engine
+
+# Create tables
+Base.metadata.create_all(bind=engine)
+
 load_dotenv()
 
 app = FastAPI()
