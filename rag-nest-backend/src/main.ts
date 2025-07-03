@@ -9,7 +9,7 @@ async function bootstrap() {
     credentials: true,
   });
 
-  await app.listen(process.env.SERVER_PORT || 5001);
+  await app.listen(process.env.SERVER_PORT || 5001, '0.0.0.0');
 }
 bootstrap();
 

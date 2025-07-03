@@ -29,7 +29,7 @@ export class DocumentsController {
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: '../uploads',
+        destination: '/var/uploads',
         filename: (req, file, cb) => {
           // Save original file name; we'll use UUID for matching in service
           const uniqueFileId = uuidv4();

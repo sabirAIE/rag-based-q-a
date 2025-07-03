@@ -5,6 +5,8 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { DocumentsModule } from './documents/documents.module';
 import { IngestionModule } from './ingestion/ingestion.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -24,5 +26,7 @@ import { IngestionModule } from './ingestion/ingestion.module';
     DocumentsModule,
     IngestionModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
