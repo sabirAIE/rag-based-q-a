@@ -36,9 +36,11 @@ def query_qa(req: QARequest):
             )
             for emb in embeddings
         ]
+        print(similarities)
         top_k = sorted(similarities, key=lambda x: x[1], reverse=True)[:5]
+        print(top_k)
         context = "\n".join([chunk for chunk, _ in top_k])
-        answer = query_gemini_flash(req.question, context[:300])
+        answer = query_gemini_flash(req.question, context[:3000])
         
 
         return {
