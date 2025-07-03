@@ -1,1 +1,2 @@
-./database/postgres_data
+database/postgres_data
+/uploads/
