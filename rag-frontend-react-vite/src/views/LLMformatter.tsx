@@ -163,10 +163,6 @@ const LLMResponseFormatter: React.FC<LLMResponseFormatterProps> = ({
 
   const parseInlineFormatting = (text: string): React.ReactNode[] => {
     // Create a more robust parsing system
-    const tokens: Array<{
-      type: "text" | "bold" | "italic" | "code";
-      content: string;
-    }> = [];
     let currentText = text;
 
     // Process in order: code first (to avoid conflicts), then bold, then italic

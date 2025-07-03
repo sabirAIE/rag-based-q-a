@@ -6,10 +6,9 @@ import {
   EyeOff,
   ArrowRight,
   Sparkles,
-  Link,
 } from "lucide-react";
 import type { Errors } from "../types";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { api } from "../APIs";
 import { useAuth } from "../context/auth-context";
 

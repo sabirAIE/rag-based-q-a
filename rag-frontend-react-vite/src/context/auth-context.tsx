@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import type { AccessToken } from "../types";
-import { useNavigate } from "react-router-dom";
 
 type User = {
   id: string;
