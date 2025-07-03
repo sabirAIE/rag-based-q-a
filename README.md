@@ -65,7 +65,12 @@ Make sure the following are installed on your system:
 From the root of the project, run:
 
 ```bash
-./build.sh
+./start.sh
+```
+
+To stop the services
+```bash
+./stop.sh
 ```
 
 ---
