@@ -69,8 +69,13 @@ From the root of the project, run:
 ```
 
 ---
+### If we run in docker, Check this port mappings
+<img width="355" alt="image" src="https://github.com/user-attachments/assets/31ef4f59-3ae8-4901-9b4e-e4d13f8bd2c4" />
 
-## 🌐 Service URLs & Access Points
+---
+
+
+## 🌐 Service URLs & Access Points(Applicable when running in Lcoal
 
 | Service | Description | URL | Health Check |
 |---------|-------------|-----|--------------|
