@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import {
   Search,
   FileText,
@@ -9,7 +9,7 @@ import {
   AlertCircle,
   FileX2,
 } from "lucide-react";
-import { api } from "./APIs";
+import { api, DATA_SERVICE } from "./APIs";
 import type { DocumentFile, QAResponse } from "./types";
 import { useNavigate } from "react-router-dom";
 import LLMResponseFormatter from "./views/LLMformatter";
@@ -42,13 +42,14 @@ export function ChatAPP() {
     setLoading(true);
 
     try {
-      const res = await api.post<QAResponse>("http://localhost:8001/qa/query", {
+      const res = await DATA_SERVICE.post<QAResponse>("/qa/query", {
         question,
         documentIds: selectedDocs,
       });
       setResponse(res.data);
-    } catch (err) {
-      console.error("Failed to fetch answer:", err);
+    } catch (err: any) {
+      // console.error("Failed to fetch answer:", err);
+      // alert(err.message || "Failed to fetch answer. Please try again.");
     } finally {
       setLoading(false);
     }
