@@ -25,8 +25,10 @@ services:
     volumes:
       - ./uploads:/var/uploads
     environment:
-      DATABASE_URL: postgresql://rag_user:rag_pass@db:5432/rag_db
       NEST_API: http://nest:6001
+      GEMINI_API_KEY: AIzaSyDEu4OYthxGV-osjSJ_xQW3mx00VKz4T5U
+      UPLOAD_DIR: /var/uploads
+      DATABASE_URL: postgresql://rag_user:rag_pass@db:5432/rag_db
 
   nest:
     build:
@@ -39,9 +41,12 @@ services:
     volumes:
       - ./uploads:/var/uploads
     environment:
-      DATABASE_URL: postgres://rag_user:rag_pass@db:5432/rag_db
       FAST_API_URL: http://fastapi:9001
-      DB_HOST: db
+      JWT_SECRET: mystrongsecret
+      JWT_EXPIRES_IN: 1d
+      SERVER_PORT: 6001
+      UPLOAD_DIR: /var/uploads
+      DATABASE_URL: postgresql://rag_user:rag_pass@db:5432/rag_db
 
   frontend:
     build:
