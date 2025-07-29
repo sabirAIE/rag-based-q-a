@@ -10,18 +10,18 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ unique: true })
+  @Column({ unique: true, nullable: false})
   email: string;
 
-  @Column()
+  @Column({nullable: false})
   username: string;
 
-  @Column({ nullable: true })
-  passwordHash: string;
+  @Column({ nullable: false })
+  passwordhash: string;
 
   @Column({ default: 'viewer' }) // 'admin' | 'editor' | 'viewer'
   role: string;
 
   @CreateDateColumn()
-  createdAt: Date;
+  created_at: Date;
 }
