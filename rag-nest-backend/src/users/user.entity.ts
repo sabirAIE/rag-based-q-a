@@ -10,13 +10,13 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ unique: true, nullable: true})
+  @Column({ unique: true, nullable: false})
   email: string;
 
   @Column({nullable: false})
   username: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: false })
   passwordhash: string;
 
   @Column({ default: 'viewer' }) // 'admin' | 'editor' | 'viewer'
