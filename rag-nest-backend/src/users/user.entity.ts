@@ -16,7 +16,7 @@ export class User {
   @Column()
   username: string;
 
-  @Column()
+  @Column({ nullable: true })
   passwordHash: string;
 
   @Column({ default: 'viewer' }) // 'admin' | 'editor' | 'viewer'
