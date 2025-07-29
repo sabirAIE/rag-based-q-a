@@ -23,5 +23,5 @@ export class User {
   role: string;
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdat: Date;
 }
