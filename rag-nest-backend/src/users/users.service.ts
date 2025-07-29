@@ -12,7 +12,7 @@ export class UsersService {
 
   async createUser(
     email: string,
-    passwordHash: string,
+    passwordhash: string,
     username: string,
     role: string,
   ) {
@@ -23,7 +23,7 @@ export class UsersService {
 
     const user = this.userRepo.create({
       email,
-      passwordHash,
+      passwordhash,
       username: username,
       role: role,
     });
